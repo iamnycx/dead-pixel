@@ -1,0 +1,49 @@
+{
+  "name": "dead-pixel-icons",
+  "version": "0.0.1",
+  "description": "Animated pixel icons library for modern UI",
+  "license": "MIT",
+  "author": {
+    "name": "nycx",
+    "email": "25nikmehta@gmail.com",
+    "url": "https://nycx.is-a.dev/"
+  },
+
+  "homepage": "https://dead-pixel-web.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamnycx/dead-pixel"
+  },
+  "keywords": ["icons", "react", "svg", "animation", "pixel"],
+
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+
+  "files": ["dist"],
+  "sideEffects": false,
+  
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+
+  "scripts": {
+    "build": "tsup"
+  },
+
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "motion": "^12"
+  },
+
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "^5"
+  }
+}

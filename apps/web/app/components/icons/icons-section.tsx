@@ -1,15 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Container from "../container";
+import Container from "../../common/container";
 import IconRender from "./icon-render";
 import IconsGrid from "./icons-grid";
-import { HeartDuotone, HeartFill, HeartStroke } from "../temp/heart-icon";
-import { MoonDuotone, MoonFill, MoonStroke } from "../temp/moon-icon";
-import { SunDuotone, SunFill, SunStroke } from "../temp/sun-icon";
-import { SearchDuotone, SearchFill, SearchStroke } from "../temp/search-icon";
 import { Input } from "../ui/input";
 import { cn } from "../../lib/utils";
+
+import { HeartIcon, MoonIcon, SearchIcon, SunIcon } from "dead-pixel-icons";
 
 type IconVariant = "stroke" | "fill" | "duotone";
 
@@ -20,35 +18,25 @@ interface VariantTab {
 
 interface IconData {
   title: string;
-  stroke: React.ReactNode;
-  fill: React.ReactNode;
-  duotone: React.ReactNode;
+  icon: React.ComponentType<{ type?: IconVariant }>;
 }
 
 const ICONS_DATA: IconData[] = [
   {
     title: "Heart",
-    stroke: <HeartStroke />,
-    fill: <HeartFill />,
-    duotone: <HeartDuotone />,
+    icon: HeartIcon,
   },
   {
     title: "Moon",
-    stroke: <MoonStroke />,
-    fill: <MoonFill />,
-    duotone: <MoonDuotone />,
+    icon: MoonIcon,
   },
   {
     title: "Sun",
-    stroke: <SunStroke />,
-    fill: <SunFill />,
-    duotone: <SunDuotone />,
+    icon: SunIcon,
   },
   {
     title: "Search",
-    stroke: <SearchStroke />,
-    fill: <SearchFill />,
-    duotone: <SearchDuotone />,
+    icon: SearchIcon,
   },
 ];
 
@@ -63,8 +51,8 @@ export default function IconsSection() {
 
   return (
     <Container className="min-h-screen border-t">
-      <div className="flex justify-between items-center border-b border-muted-foreground border-dashed">
-        <div className="relative w-fit ml-1">
+      <div className="flex justify-between border-b border-muted-foreground border-dashed">
+        <div className="relative w-72 border-r border-muted-foreground border-dashed">
           <Input placeholder="Search" />
           <span className="absolute tracking-wider text-xs right-4 top-1/2 -translate-y-1/2">
             Ctrl+K
@@ -97,21 +85,11 @@ export default function IconsSection() {
       </div>
       <div>
         <IconsGrid>
-          {ICONS_DATA.map(({ title, stroke, fill, duotone }) => {
-            let iconToRender;
-            switch (activeVariant) {
-              case "stroke":
-                iconToRender = stroke;
-                break;
-              case "fill":
-                iconToRender = fill;
-                break;
-              case "duotone":
-                iconToRender = duotone;
-                break;
-            }
-            return <IconRender key={title} icon={iconToRender} title={title} />;
-          })}
+          {ICONS_DATA.map(({ title, icon: Icon }) => (
+            <IconRender key={title} title={title}>
+              <Icon type={activeVariant} />
+            </IconRender>
+          ))}
         </IconsGrid>
       </div>
     </Container>

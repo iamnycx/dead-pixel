@@ -1,4 +1,4 @@
-import Container from "./container";
+import Container from "../common/container";
 import { ThemeToggler } from "./theme-toggle";
 
 export default function Navbar() {

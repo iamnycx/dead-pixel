@@ -1,4 +1,4 @@
-import Container from "./container";
+import Container from "../common/container";
 import { Button } from "./ui/button";
 
 export default function Hero() {
@@ -20,6 +20,10 @@ export default function Hero() {
             Read Docs
           </Button>
         </div>
+        <Button variant="ghost" size="lg" className="mt-4">
+          <span className="text-chart-3">npm</span> <span>i</span>{" "}
+          <span className="text-primary-foreground">dead-pixel-icons</span>
+        </Button>
       </div>
     </Container>
   );

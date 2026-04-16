@@ -1,0 +1,16 @@
+{
+  "extends": "../typescript-config/react-library.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+
+    "jsx": "react-jsx",
+    "types": ["react"],
+    "declaration": true,
+    "declarationMap": true,
+
+    "moduleResolution": "nodenext",
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
