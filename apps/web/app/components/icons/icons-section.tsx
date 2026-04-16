@@ -52,9 +52,9 @@ export default function IconsSection() {
   return (
     <Container className="min-h-screen border-t">
       <div className="flex justify-between border-b border-muted-foreground border-dashed">
-        <div className="relative w-72 border-r border-muted-foreground border-dashed">
+        <div className="relative w-80 border-r border-muted-foreground border-dashed">
           <Input placeholder="Search" />
-          <span className="absolute tracking-wider text-xs right-4 top-1/2 -translate-y-1/2">
+          <span className="absolute tracking-wider text-xs right-8 top-1/2 -translate-y-1/2">
             Ctrl+K
           </span>
         </div>
