@@ -14,7 +14,7 @@ export default function Hero() {
         </p>
         <div className="space-x-2 mt-6">
           <Button variant="outline" size="lg">
-            Browse Icons
+            Get Icons
           </Button>
           <Button variant="ghost" size="lg">
             Read Docs

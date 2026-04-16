@@ -5,5 +5,5 @@ interface IconsGridProps {
 }
 
 export default function IconsGrid({ children }: IconsGridProps) {
-  return <div className="grid grid-cols-8 gap-4 p-8">{children}</div>;
+  return <div className="grid grid-cols-14 p-8 gap-8">{children}</div>;
 }
