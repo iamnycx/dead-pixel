@@ -6,7 +6,10 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "dead-pixel-icons": ["../../packages/icons/dist"]
+    }
   },
   "include": [
     "**/*.ts",
