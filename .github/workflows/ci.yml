@@ -43,8 +43,11 @@ jobs:
       - name: Lint monorepo
         run: bun run lint
 
-      - name: Type-check monorepo
-        run: bun run check-types
-
       - name: Build monorepo
         run: bun run build
+
+      - name: Install dependencies (post-build)
+        run: bun install --frozen-lockfile
+
+      - name: Type-check monorepo
+        run: bun run check-types
