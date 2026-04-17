@@ -11,25 +11,25 @@ A modern pixel-perfect library featuring animated pixel icons and a Next.js web 
 
 ## Features
 
--  TurboRepo for fast monorepo builds
--  Animated pixel icon library (React)
--  Next.js 14 app with modern UI
--  Shared TypeScript and ESLint configs
--  Prettier, ESLint, Husky, and lint-staged for code quality
+- TurboRepo for fast monorepo builds
+- Animated pixel icon library (React)
+- Next.js 14 app with modern UI
+- Shared TypeScript and ESLint configs
+- Prettier, ESLint, Husky, and lint-staged for code quality
 
 ## Getting Started
 
 1. **Install dependencies** (requires Node.js ≥18 and Bun):
-	```sh
-	bun install
-	```
+   ```sh
+   bun install
+   ```
 2. **Run the development server:**
-	```sh
-	bun run dev
-	```
-	Or use npm/yarn/pnpm as preferred.
+   ```sh
+   bun run dev
+   ```
+   Or use npm/yarn/pnpm as preferred.
 3. **Open the app:**
-	Visit [http://localhost:3000](http://localhost:3000) to view the web app.
+   Visit [http://localhost:3000](http://localhost:3000) to view the web app.
 
 ## Scripts
 
