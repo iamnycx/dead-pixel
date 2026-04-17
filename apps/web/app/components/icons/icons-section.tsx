@@ -7,36 +7,72 @@ import IconsGrid from "./icons-grid";
 import { Input } from "../ui/input";
 import { cn } from "../../lib/utils";
 
-import { HeartIcon, MoonIcon, SearchIcon, SunIcon } from "dead-pixel-icons";
+import {
+  CopyIcon,
+  CrossIcon,
+  HeartIcon,
+  MinusIcon,
+  MoonIcon,
+  PlusIcon,
+  SearchIcon,
+  SunIcon,
+  type IconProps,
+} from "dead-pixel-icons";
+import IconPopup from "./icon-popup";
 
-type IconVariant = "stroke" | "fill" | "duotone";
+type IconVariant = IconProps["variant"];
 
 interface VariantTab {
   value: IconVariant;
   label: string;
 }
 
-interface IconData {
+export interface IconData {
+  id: number;
   title: string;
-  icon: React.ComponentType<{ type?: IconVariant }>;
+  icon: React.ComponentType<IconProps>;
 }
 
 const ICONS_DATA: IconData[] = [
   {
-    title: "Heart",
-    icon: HeartIcon,
+    id: 1,
+    title: "Copy",
+    icon: CopyIcon,
   },
   {
+    id: 2,
     title: "Moon",
     icon: MoonIcon,
   },
   {
+    id: 3,
     title: "Sun",
     icon: SunIcon,
   },
   {
+    id: 4,
     title: "Search",
     icon: SearchIcon,
+  },
+  {
+    id: 5,
+    title: "Cross",
+    icon: CrossIcon,
+  },
+  {
+    id: 6,
+    title: "Plus",
+    icon: PlusIcon,
+  },
+  {
+    id: 7,
+    title: "Minus",
+    icon: MinusIcon,
+  },
+  {
+    id: 8,
+    title: "Heart",
+    icon: HeartIcon,
   },
 ];
 
@@ -48,12 +84,22 @@ const VARIANT_TABS: VariantTab[] = [
 
 export default function IconsSection() {
   const [activeVariant, setActiveVariant] = useState<IconVariant>("stroke");
+  const [iconPopupOpen, setIconPopupOpen] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredIcons = ICONS_DATA.filter((icon) =>
+    icon.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
 
   return (
-    <Container className="min-h-screen border-t">
+    <Container id="icons" className="min-h-screen border-t">
       <div className="flex justify-between border-b border-muted-foreground border-dashed">
         <div className="relative w-80 border-r border-muted-foreground border-dashed">
-          <Input placeholder="Search" />
+          <Input
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <span className="absolute tracking-wider text-xs right-8 top-1/2 -translate-y-1/2">
             Ctrl+K
           </span>
@@ -85,13 +131,23 @@ export default function IconsSection() {
       </div>
       <div>
         <IconsGrid>
-          {ICONS_DATA.map(({ title, icon: Icon }) => (
-            <IconRender key={title} title={title}>
-              <Icon type={activeVariant} />
+          {filteredIcons.map(({ id, title, icon: Icon }) => (
+            <IconRender
+              key={id}
+              title={title}
+              onClick={() => setIconPopupOpen(id)}
+            >
+              <Icon variant={activeVariant} />
             </IconRender>
           ))}
         </IconsGrid>
       </div>
+      {iconPopupOpen && (
+        <IconPopup
+          icon={ICONS_DATA.find((v) => v.id === iconPopupOpen)!}
+          setIconPopupOpen={setIconPopupOpen}
+        />
+      )}
     </Container>
   );
 }

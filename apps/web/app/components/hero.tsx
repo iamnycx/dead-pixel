@@ -1,5 +1,7 @@
+import Link from "next/link";
 import Container from "../common/container";
 import { Button } from "./ui/button";
+import CopyCommand from "./copy-command";
 
 export default function Hero() {
   return (
@@ -13,17 +15,13 @@ export default function Hero() {
           interaction without slowing your UI.
         </p>
         <div className="space-x-2 mt-6">
-          <Button variant="outline" size="lg">
-            Get Icons
-          </Button>
-          <Button variant="ghost" size="lg">
-            Read Docs
-          </Button>
+          <Link href="/#icons">
+            <Button variant="outline" size="lg">
+              Get Icons
+            </Button>
+          </Link>
+          <CopyCommand />
         </div>
-        <Button variant="ghost" size="lg" className="mt-4">
-          <span className="text-chart-3">npm</span> <span>i</span>{" "}
-          <span className="text-primary-foreground">dead-pixel-icons</span>
-        </Button>
       </div>
     </Container>
   );
