@@ -17,21 +17,35 @@ interface IconPopupProps {
 type IconVariant = IconProps["variant"];
 type IconSize = IconProps["size"];
 type IconAnimationTrigger = "hover" | "click";
-type IconAnimationEasing = "linear" | "ease-in" | "ease-out" | "ease-in-out";
+type IconAnimationEasing = "linear" | "easeIn" | "easeOut" | "easeInOut";
 
 const ALLOWED_SIZES: IconSize[] = [16, 20, 24, 32, 40, 48];
-const ALLOWED_DURATIONS = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+type AnimationDuration =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | 1000;
+const ALLOWED_DURATIONS: AnimationDuration[] = [
+  100, 200, 300, 400, 500, 600, 700, 800, 900, 1000,
+];
 
 export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
   const [iconVariant, setIconVariant] = useState<IconVariant>("stroke");
-  const [iconSize, setIconSize] = useState<IconSize>(32);
+  const [iconSize, setIconSize] = useState<IconSize>(48);
   // const [iconPrimaryColor, setIconPrimaryColor] = useState("#B7B7B7");
   // const [iconSecondaryColor, setIconSecondaryColor] = useState("#520000");
   const [iconAnimationTrigger, setIconAnimationTrigger] =
     useState<IconAnimationTrigger>("hover");
-  const [iconAnimationDuration, setIconAnimationDuration] = useState(300);
+  const [iconAnimationDuration, setIconAnimationDuration] =
+    useState<AnimationDuration>(1000);
   const [iconAnimationEasing, setIconAnimationEasing] =
-    useState<IconAnimationEasing>("ease-in-out");
+    useState<IconAnimationEasing>("easeInOut");
   const [iconAnimationLoop, setIconAnimationLoop] = useState(false);
 
   function incrementSize() {
@@ -224,33 +238,31 @@ export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
                     <Button
                       size="sm"
                       variant={
-                        iconAnimationEasing === "ease-in"
-                          ? "default"
-                          : "outline"
+                        iconAnimationEasing === "easeIn" ? "default" : "outline"
                       }
-                      onClick={() => setIconAnimationEasing("ease-in")}
+                      onClick={() => setIconAnimationEasing("easeIn")}
                     >
                       In
                     </Button>
                     <Button
                       size="sm"
                       variant={
-                        iconAnimationEasing === "ease-out"
+                        iconAnimationEasing === "easeOut"
                           ? "default"
                           : "outline"
                       }
-                      onClick={() => setIconAnimationEasing("ease-out")}
+                      onClick={() => setIconAnimationEasing("easeOut")}
                     >
                       Out
                     </Button>
                     <Button
                       size="sm"
                       variant={
-                        iconAnimationEasing === "ease-in-out"
+                        iconAnimationEasing === "easeInOut"
                           ? "default"
                           : "outline"
                       }
-                      onClick={() => setIconAnimationEasing("ease-in-out")}
+                      onClick={() => setIconAnimationEasing("easeInOut")}
                     >
                       In-Out
                     </Button>
@@ -276,6 +288,10 @@ export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
               <icon.icon
                 size={iconSize}
                 variant={iconVariant}
+                animationDuration={iconAnimationDuration}
+                animationEasing={iconAnimationEasing}
+                animationLoop={iconAnimationLoop}
+                animationTrigger={iconAnimationTrigger}
                 // primaryColor={iconPrimaryColor}
                 // secondaryColor={iconSecondaryColor}
               />

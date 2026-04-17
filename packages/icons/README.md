@@ -25,7 +25,7 @@ pnpm add dead-pixel-icons
 ## Usage
 
 ```tsx
-import { HeartIcon, MoonIcon, SunIcon, SearchIcon } from 'dead-pixel-icons';
+import { HeartIcon, MoonIcon, SunIcon, SearchIcon } from "dead-pixel-icons";
 
 function Example() {
   return (
@@ -40,9 +40,11 @@ function Example() {
 ```
 
 ### Icon Props
+
 - `type`: `'stroke' | 'fill' | 'duotone'` (optional, default: `'stroke'`)
 
 ## Available Icons
+
 - `HeartIcon`
 - `MoonIcon`
 - `SunIcon`

@@ -6,5 +6,5 @@ export default defineConfig({
   dts: true,
   clean: true,
   splitting: false,
-  external: ["react", "motion"]
+  external: ["react", "motion"],
 });
