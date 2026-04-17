@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { cn } from "../lib/utils";
 import { MoonIcon, SunIcon } from "dead-pixel-icons";
+import { Button } from "../components/ui/button";
 
 interface ThemeTogglerProps extends React.ComponentPropsWithoutRef<"button"> {
   duration?: number;
@@ -84,8 +85,9 @@ export const ThemeToggler = ({
   }, [isDark, duration]);
 
   return (
-    <button
+    <Button
       type="button"
+      variant="outline"
       ref={buttonRef}
       onClick={toggleTheme}
       className={cn(className)}
@@ -93,6 +95,6 @@ export const ThemeToggler = ({
     >
       {isDark ? <SunIcon /> : <MoonIcon />}
       <span className="sr-only">Toggle theme</span>
-    </button>
+    </Button>
   );
 };

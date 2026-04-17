@@ -11,10 +11,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix"
+      "prettier --write --ignore-unknown"
     ]
   },
   "devDependencies": {
+    "eslint": "^10.2.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "^3.7.4",

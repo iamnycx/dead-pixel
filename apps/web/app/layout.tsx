@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { GeistPixelLine } from "geist/font/pixel";
 import { ThemeProvider } from "./components/providers/theme-provider";
+import { Toaster } from "./components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Dead Pixel Icon Library",
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistPixelLine.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Toaster />
           {children}
         </ThemeProvider>
       </body>
