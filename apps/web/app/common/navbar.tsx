@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Container from "../common/container";
 import { ThemeToggler } from "./theme-toggle";
+import Container from "./container";
 
 export default function Navbar() {
   return (
-    <Container className="flex justify-between items-center py-4 px-8 border-b">
+    <Container className="flex fixed inset-x-0 justify-between items-center py-4 px-8 border-b">
       <h1 className="font-bold">Dead-Pixel</h1>
       <nav className="flex gap-8">
         <Link href="/" className="relative w-fit px-2 group">

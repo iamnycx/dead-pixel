@@ -1,11 +1,11 @@
 import Link from "next/link";
-import Container from "../common/container";
 import { Button } from "./ui/button";
 import CopyCommand from "./copy-command";
+import Container from "../common/container";
 
 export default function Hero() {
   return (
-    <Container className="flex items-center h-[50vh]">
+    <Container className="flex -z-20 items-center h-96 fixed inset-x-0 mt-16">
       <div className="w-1/2 px-8">
         <h1 className="text-5xl font-bold tracking-tight">
           Pixel Icons That React
