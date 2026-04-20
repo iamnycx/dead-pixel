@@ -8,6 +8,7 @@ import { IconData } from "./icons-section";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
+import { getReactSnippet } from "../../lib/snippet";
 
 interface IconPopupProps {
   icon: IconData;
@@ -37,13 +38,13 @@ const ALLOWED_DURATIONS: AnimationDuration[] = [
 
 export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
   const [iconVariant, setIconVariant] = useState<IconVariant>("stroke");
-  const [iconSize, setIconSize] = useState<IconSize>(48);
+  const [iconSize, setIconSize] = useState<IconSize>(24);
   // const [iconPrimaryColor, setIconPrimaryColor] = useState("#B7B7B7");
   // const [iconSecondaryColor, setIconSecondaryColor] = useState("#520000");
   const [iconAnimationTrigger, setIconAnimationTrigger] =
     useState<IconAnimationTrigger>("hover");
   const [iconAnimationDuration, setIconAnimationDuration] =
-    useState<AnimationDuration>(1000);
+    useState<AnimationDuration>(300);
   const [iconAnimationEasing, setIconAnimationEasing] =
     useState<IconAnimationEasing>("easeInOut");
   const [iconAnimationLoop, setIconAnimationLoop] = useState(false);
@@ -78,6 +79,25 @@ export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
       const prev = ALLOWED_DURATIONS[idx - 1];
       if (prev !== undefined) setIconAnimationDuration(prev);
     }
+  }
+
+  async function handleCopyName() {
+    await navigator.clipboard.writeText(icon.name);
+    toast("Icon Name copied to clipboard");
+  }
+
+  async function handleCopyReactCode() {
+    const code = getReactSnippet({
+      name: icon.name,
+      variant: iconVariant,
+      size: iconSize,
+      animationDuration: iconAnimationDuration,
+      animationEasing: iconAnimationEasing,
+      animationTrigger: iconAnimationTrigger,
+      animationLoop: iconAnimationLoop,
+    });
+    await navigator.clipboard.writeText(code);
+    toast("React snippet copied to clipboard");
   }
 
   return (
@@ -272,13 +292,22 @@ export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
                   <p className="uppercase text-[0.75rem] tracking-wider">
                     loop
                   </p>
-                  <Button
-                    size="icon-sm"
-                    variant={iconAnimationLoop ? "default" : "outline"}
-                    onClick={() => setIconAnimationLoop((prev) => !prev)}
-                  >
-                    {iconAnimationLoop ? "On" : "Off"}
-                  </Button>
+                  <div className="flex gap-3 items-center">
+                    <Button
+                      size="icon-sm"
+                      variant={iconAnimationLoop ? "outline" : "default"}
+                      onClick={() => setIconAnimationLoop(false)}
+                    >
+                      Off
+                    </Button>{" "}
+                    <Button
+                      size="icon-sm"
+                      variant={iconAnimationLoop ? "default" : "outline"}
+                      onClick={() => setIconAnimationLoop(true)}
+                    >
+                      On
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -297,8 +326,12 @@ export default function IconPopup({ icon, setIconPopupOpen }: IconPopupProps) {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <Button variant="outline">Name</Button>
-              <Button variant="outline">React</Button>
+              <Button variant="outline" onClick={handleCopyName}>
+                Name
+              </Button>
+              <Button variant="outline" onClick={handleCopyReactCode}>
+                React
+              </Button>
               <Button variant="outline">SVG</Button>
             </div>
           </div>

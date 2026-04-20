@@ -22,6 +22,7 @@ interface VariantTab {
 export interface IconData {
   id: number;
   title: string;
+  name: string;
   icon: React.ComponentType<IconProps>;
 }
 
