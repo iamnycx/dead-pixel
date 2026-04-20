@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 export default function CopyCommand() {
   const handleCopyCommand = async () => {
-    // await navigator.clipboard.writeText("npm i dead-pixel-icons");
+    await navigator.clipboard.writeText("npm i dead-pixel-icons");
     toast("Command copied to clipboard", {
       description: "Run this in your terminal to download the icons",
     });
