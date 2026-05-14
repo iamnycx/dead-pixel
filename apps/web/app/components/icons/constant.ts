@@ -24,6 +24,12 @@ import { type IconData } from "./icons-section";
 
 export const ICONS_DATA: IconData[] = [
   {
+    id: 0,
+    title: "Settings",
+    name: "SettingsIcon",
+    icon: SettingsIcon,
+  },
+  {
     id: 1,
     title: "Copy",
     name: "CopyIcon",
@@ -136,11 +142,5 @@ export const ICONS_DATA: IconData[] = [
     title: "Refresh",
     name: "RefreshIcon",
     icon: RefreshIcon,
-  },
-  {
-    id: 20,
-    title: "Settings",
-    name: "SettingsIcon",
-    icon: SettingsIcon,
   },
 ];
